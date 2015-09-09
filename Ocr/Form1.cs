@@ -23,7 +23,7 @@ namespace Ocr
         {
             IOcrEngine ocrEngine = OcrEngineHandler.createEngine();
 
-            ocrEngine.getTextFromImageFile("");
+            ocrEngine.getTextFromImageFile("","","");
 
         }
     }

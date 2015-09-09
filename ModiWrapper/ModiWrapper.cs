@@ -9,10 +9,47 @@ namespace Ocr.Wrapper.ModiWrapper
 {
     public class ModiWrapper : IOcrEngine
     {
-        public string getTextFromImageFile(string filePath)
+        private string outputText;
+        MODI.MiLANGUAGES language;
+        public ModiWrapper()
         {
-                        
+            outputText = "Not Recognized";
+        }
+
+        public string getTextFromImageFile(string filePath, string selectedLanguage, string selectedMode)
+        {
+            switch (selectedLanguage){
+                case "SPANISH":
+                    language=MODI.MiLANGUAGES.miLANG_SPANISH;
+                    break;
+                case "ENGLISH":
+                    language=MODI.MiLANGUAGES.miLANG_ENGLISH;
+                    break;
+                case "FRENCH":
+                    language=MODI.MiLANGUAGES.miLANG_FRENCH;
+                    break;
+                default:
+                    language=MODI.MiLANGUAGES.miLANG_SPANISH;
+                    break;
+
+            }       
+
+            createMODI(filePath);
+                       
             throw new NotImplementedException();
         }
+
+        private void createMODI(string fileName){
+            MODI.Document md = new MODI.Document(); 
+            md.Create(fileName); 
+            md.OCR(language,  true, true); 
+            MODI.Image image = (MODI.Image)md.Images[0];
+            outputText = image.Layout.Text;
+            Console.WriteLine(image.Layout.Text); 
+            md.Close();
+            throw new NotImplementedException();
+
+        }
+        }
+
     }
-}
