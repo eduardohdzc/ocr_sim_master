@@ -23,6 +23,7 @@ namespace Ocr
         {
             IOcrEngine ocrEngine = OcrEngineHandler.createEngine();
 
+            // TODO: change the hardcoded path with a path read from UI
             string text = ocrEngine.getTextFromImageFile(@"C:\Users\Eduardo\Documents\Visual Studio 2015\Projects\Ocr\letter.jpg",Language.ENGLISH, "");
             richTextBox1.Text = text;
         }

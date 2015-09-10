@@ -11,7 +11,8 @@ namespace Ocr.Engine
     {
         ENGLISH,
         SPANISH,
-        GERMAN
+        GERMAN,
+        FRENCH
     }
 
     public interface IOcrEngine

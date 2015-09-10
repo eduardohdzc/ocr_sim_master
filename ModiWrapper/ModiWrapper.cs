@@ -26,27 +26,31 @@ namespace Ocr.Wrapper.ModiWrapper
                 case Language.ENGLISH:
                     language=MODI.MiLANGUAGES.miLANG_ENGLISH;
                     break;
-               /* case "FRENCH":
+               case Language.FRENCH:
                     language=MODI.MiLANGUAGES.miLANG_FRENCH;
-                    break;*/
+                    break;
                 default:
                     language=MODI.MiLANGUAGES.miLANG_SPANISH;
                     break;
 
             }       
 
-            createMODI(filePath);
             
+
+
+            return createMODI(filePath);
+
         }
 
-        private void createMODI(string fileName){
+        private string createMODI(string fileName){
             MODI.Document md = new MODI.Document(); 
             md.Create(fileName); 
             md.OCR(language,  true, true); 
             MODI.Image image = (MODI.Image)md.Images[0];
             outputText = image.Layout.Text;
-            Console.WriteLine(image.Layout.Text); 
+            
             md.Close();
+            return outputText;
             
         }
 

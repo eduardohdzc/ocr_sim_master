@@ -48,6 +48,10 @@
       <Project>{9e7cbdd8-3199-46e1-aec2-9b1876315f72}</Project>
       <Name>Asprise</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ModiWrapper\ModiWrapper.csproj">
+      <Project>{2fa3734b-13c9-4299-b956-c98f346aadfd}</Project>
+      <Name>ModiWrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OcrCommon\OcrEngineICD.csproj">
       <Project>{a15cf648-782a-4af0-b232-5486cee1c4ef}</Project>
       <Name>OcrEngineICD</Name>

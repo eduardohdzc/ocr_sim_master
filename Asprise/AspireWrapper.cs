@@ -25,6 +25,9 @@ namespace Ocr.Wrapper.Asprise
                 case Language.GERMAN:
                     language = AspriseOCR.LANGUAGE_DEU;
                     break;
+                case Language.FRENCH:
+                    language = AspriseOCR.LANGUAGE_FRA;
+                    break;
                 default:
                     language = AspriseOCR.LANGUAGE_ENG;
                     break;
