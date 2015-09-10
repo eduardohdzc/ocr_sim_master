@@ -11,23 +11,24 @@ namespace Ocr.Wrapper.ModiWrapper
     {
         private string outputText;
         MODI.MiLANGUAGES language;
+
         public ModiWrapper()
         {
             outputText = "Not Recognized";
         }
 
-        public string getTextFromImageFile(string filePath, string selectedLanguage, string selectedMode)
+        public string getTextFromImageFile(string filePath, Language selectedLanguage, string selectedMode)
         {
             switch (selectedLanguage){
-                case "SPANISH":
+                case Language.SPANISH:
                     language=MODI.MiLANGUAGES.miLANG_SPANISH;
                     break;
-                case "ENGLISH":
+                case Language.ENGLISH:
                     language=MODI.MiLANGUAGES.miLANG_ENGLISH;
                     break;
-                case "FRENCH":
+               /* case "FRENCH":
                     language=MODI.MiLANGUAGES.miLANG_FRENCH;
-                    break;
+                    break;*/
                 default:
                     language=MODI.MiLANGUAGES.miLANG_SPANISH;
                     break;
@@ -35,8 +36,7 @@ namespace Ocr.Wrapper.ModiWrapper
             }       
 
             createMODI(filePath);
-                       
-            throw new NotImplementedException();
+            
         }
 
         private void createMODI(string fileName){
@@ -47,9 +47,9 @@ namespace Ocr.Wrapper.ModiWrapper
             outputText = image.Layout.Text;
             Console.WriteLine(image.Layout.Text); 
             md.Close();
-            throw new NotImplementedException();
-
+            
         }
+
         }
 
     }

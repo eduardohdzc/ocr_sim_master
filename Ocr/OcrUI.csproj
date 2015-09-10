@@ -33,6 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="asprise-ocr-api, Version=15.3.0.11, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\asprise-ocr-api.15.3.0.11\lib\net40\asprise-ocr-api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="asprise-ocr-dll-bundle-32, Version=15.3.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\asprise-ocr-dll-bundle-32.15.3.0.4\lib\net40\asprise-ocr-dll-bundle-32.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="asprise-ocr-dll-bundle-64, Version=15.3.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\asprise-ocr-dll-bundle-64.15.3.0.4\lib\net40\asprise-ocr-dll-bundle-64.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,10 +65,15 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Ocr.cs" />
+    <Compile Include="OcrSampleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OcrSampleForm.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OcrSampleForm.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -66,6 +83,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,6 +106,9 @@
       <Project>{a15cf648-782a-4af0-b232-5486cee1c4ef}</Project>
       <Name>OcrEngineICD</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe-AspriseOCR.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

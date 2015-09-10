@@ -22,43 +22,40 @@ namespace Ocr.Wrapper.TesseractWrapper
             language = "eng";
         }
 
-     public string getTextFromImageFile(string filePath, string selectedLanguage, string selectedMode)
+     public string getTextFromImageFile(string filePath, Language selectedLanguage,  string selectedMode)
      {
          switch (selectedLanguage)
          {
-             case "SPANISH":
+             case Language.SPANISH:
                  language = "spa";
                  break;
-             case "ENGLISH":
+             case Language.ENGLISH:
                  language = "eng";
                  break;
-             case "GERMAN":
+                case Language.GERMAN:
                  language = "deu";
-                 break;
-             case "CHINESE_SIMPLIFIED":
-                 language = "chi_sim";
-                 break;
+                 break;            
              default:
                  language = "eng";
                  break;
-
          }
 
-         createTesseract(filePath);
 
-         throw new NotImplementedException();
+         createTesseract(filePath);
+            
      }
+
      private void createTesseract(string fileName)
      {
          // To DO, Bitmap not recognized
-         //Bitmap image = new Bitmap(fileName);
+         Bitmap image = new Bitmap(fileName);
          Tesseract.TesseractEngine engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
-         //Tesseract.Page page = engine.Process(image);
-         outputText = page.GetText();
-         Console.WriteLine(outputText);
-         engine.Dispose();
-         throw new NotImplementedException();
+            Tesseract.Page page = engine.Process(image);
+            
 
+            outputText = page.GetText();
+         Console.WriteLine(outputText);
+         engine.Dispose();         
      }
     }
 }

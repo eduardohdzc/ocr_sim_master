@@ -23,8 +23,8 @@ namespace Ocr
         {
             IOcrEngine ocrEngine = OcrEngineHandler.createEngine();
 
-            ocrEngine.getTextFromImageFile("","","");
-
+            string text = ocrEngine.getTextFromImageFile(@"C:\Users\Eduardo\Documents\Visual Studio 2015\Projects\Ocr\letter.jpg",Language.ENGLISH, "");
+            richTextBox1.Text = text;
         }
     }
 }
