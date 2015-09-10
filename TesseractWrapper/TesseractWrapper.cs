@@ -24,42 +24,38 @@ namespace Ocr.Wrapper.TesseractWrapper
 
      public string getTextFromImageFile(string filePath, Language selectedLanguage,  string selectedMode)
      {
+             string language = "eng";
+             switch (selectedLanguage)
+             {
+                 case Language.SPANISH:
+                     language = "spa";
+                     break;
+                 case Language.ENGLISH:
+                     language = "eng";
+                     break;
+                    case Language.GERMAN:
+                     language = "deu";
+                     break;            
+                 default:
+                     language = "eng";
+                     break;
+             }
 
-         string language = "eng";
-         switch (selectedLanguage)
-         {
-             case Language.SPANISH:
-                 language = "spa";
-                 break;
-             case Language.ENGLISH:
-                 language = "eng";
-                 break;
-                case Language.GERMAN:
-                 language = "deu";
-                 break;            
-             default:
-                 language = "eng";
-                 break;
-         }
 
-
-         return createTesseract(filePath);
+            Bitmap image = new Bitmap(filePath);
+            // TODO: Hardcoded path
             
-     }
 
-     private string createTesseract(string fileName)
-     {
-
-            Bitmap image = new Bitmap(fileName);           
-         
-            Tesseract.TesseractEngine engine = new TesseractEngine(@"C:\Users\Eduardo\Documents\Visual Studio 2015\Projects\Ocr\packages\tessdata", "eng", EngineMode.Default);
-            Tesseract.Page page = engine.Process(image);           
+            Tesseract.TesseractEngine engine = new TesseractEngine(@"C:\Users\Eduardo\Documents\Visual Studio 2015\Projects\Ocr\TesseractWrapper\tessdata", 
+                language, EngineMode.Default);
+            Tesseract.Page page = engine.Process(image);
 
             outputText = page.GetText();
-         
+
             engine.Dispose();
-            
-            return outputText;      
-     }
+
+            return outputText;
+
+        }    
     }
 }

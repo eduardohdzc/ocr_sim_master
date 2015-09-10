@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using asprise_ocr_api;
 
-namespace Ocr.Wrapper.Asprise
+namespace Ocr.Wrapper.AspriseWrapper
 {
     public class AspriseWrapper : IOcrEngine
     {

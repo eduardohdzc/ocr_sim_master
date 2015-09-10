@@ -1,6 +1,6 @@
 ﻿using Ocr.Wrapper;
 using Ocr.Wrapper.ModiWrapper;
-using Ocr.Wrapper.Asprise;
+using Ocr.Wrapper.AspriseWrapper;
 using Ocr.Wrapper.TesseractWrapper;
 using System;
 using System.Collections.Generic;
@@ -15,8 +15,10 @@ namespace Ocr.Engine.Handler
         public static IOcrEngine createEngine()
         {
             // TODO: change this line with the actual call to the abstract factory
+            //IOcrEngine engineWrapper = new AspriseWrapper();
             IOcrEngine engineWrapper = new TesseractWrapper();
-            
+            //IOcrEngine engineWrapper = new ModiWrapper();
+
             return engineWrapper;
         }       
     }

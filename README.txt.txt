@@ -15,5 +15,7 @@ AspriseOCR
 Go to Tools->Library Package Manager->Package Manager Console and type the following command:
 Install-Package asprise-ocr-api
 
-
+Tesseract
+Go to Tools->Library Package Manager->Package Manager Console and type the following command:
+Install-Package Tesseract
 
