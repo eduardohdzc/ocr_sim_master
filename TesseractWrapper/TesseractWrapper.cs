@@ -14,16 +14,18 @@ namespace Ocr.Wrapper.TesseractWrapper
 {
     public class TesseractWrapper : IOcrEngine
     {
-     private string outputText;
-     private string language;
-     public TesseractWrapper()
+        private string outputText;
+        
+
+        public TesseractWrapper()
         {
-            outputText = "Not Recognized";
-            language = "eng";
+            outputText = "Not Recognized";            
         }
 
      public string getTextFromImageFile(string filePath, Language selectedLanguage,  string selectedMode)
      {
+
+         string language = "eng";
          switch (selectedLanguage)
          {
              case Language.SPANISH:
@@ -41,21 +43,23 @@ namespace Ocr.Wrapper.TesseractWrapper
          }
 
 
-         createTesseract(filePath);
+         return createTesseract(filePath);
             
      }
 
-     private void createTesseract(string fileName)
+     private string createTesseract(string fileName)
      {
-         // To DO, Bitmap not recognized
-         Bitmap image = new Bitmap(fileName);
-         Tesseract.TesseractEngine engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
-            Tesseract.Page page = engine.Process(image);
-            
+
+            Bitmap image = new Bitmap(fileName);           
+         
+            Tesseract.TesseractEngine engine = new TesseractEngine(@"C:\Users\Eduardo\Documents\Visual Studio 2015\Projects\Ocr\packages\tessdata", "eng", EngineMode.Default);
+            Tesseract.Page page = engine.Process(image);           
 
             outputText = page.GetText();
-         Console.WriteLine(outputText);
-         engine.Dispose();         
+         
+            engine.Dispose();
+            
+            return outputText;      
      }
     }
 }

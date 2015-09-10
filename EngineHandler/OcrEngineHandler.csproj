@@ -56,6 +56,10 @@
       <Project>{a15cf648-782a-4af0-b232-5486cee1c4ef}</Project>
       <Name>OcrEngineICD</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TesseractWrapper\TesseractWrapper.csproj">
+      <Project>{eda31c60-f44e-40b3-90e1-1d3ee6c9cf63}</Project>
+      <Name>TesseractWrapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
