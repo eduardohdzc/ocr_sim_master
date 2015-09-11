@@ -66,6 +66,7 @@ namespace Ocr
             if (result == DialogResult.OK)
             {
                 filePath.Text = openFileDialog1.FileName;
+                pictureBox1.ImageLocation = openFileDialog1.FileName;
             }
         }
 
