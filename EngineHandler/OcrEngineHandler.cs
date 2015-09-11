@@ -14,12 +14,29 @@ namespace Ocr.Engine.Handler
     {
         public static IOcrEngine createEngine()
         {
-            // TODO: change this line with the actual call to the abstract factory
             //IOcrEngine engineWrapper = new AspriseWrapper();
             IOcrEngine engineWrapper = new TesseractWrapper();
             //IOcrEngine engineWrapper = new ModiWrapper();
 
             return engineWrapper;
-        }       
+        }
+
+        // Factory abstract
+        public static IOcrEngine createEngine(string engine)
+        {
+            if (engine.Equals("MODI"))
+            {
+                return new ModiWrapper();
+            }
+            else if (engine.Equals("Tesseract"))
+            {
+                return new TesseractWrapper();
+            }
+            else if (engine.Equals("Asprise"))
+            {
+                return new AspriseWrapper();
+            }
+            return new TesseractWrapper();
+        }
     }
 }

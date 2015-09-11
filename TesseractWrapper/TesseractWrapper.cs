@@ -41,19 +41,21 @@ namespace Ocr.Wrapper.TesseractWrapper
                      break;
              }
 
+            try {
+                Bitmap image = new Bitmap(filePath);
 
-            Bitmap image = new Bitmap(filePath);
-            // TODO: Hardcoded path
-            
+                Tesseract.TesseractEngine engine = new TesseractEngine(@"C:\Users\Luis\Source\Repos\ocr_sim_master\TesseractWrapper\tessdata",
+                    language, EngineMode.Default);
+                Tesseract.Page page = engine.Process(image);
 
-            Tesseract.TesseractEngine engine = new TesseractEngine(@"C:\Users\Eduardo\Documents\Visual Studio 2015\Projects\Ocr\TesseractWrapper\tessdata", 
-                language, EngineMode.Default);
-            Tesseract.Page page = engine.Process(image);
+                outputText = page.GetText();
 
-            outputText = page.GetText();
-
-            engine.Dispose();
-
+                engine.Dispose();
+            } catch (Exception e)
+            {
+                outputText = "An error occurred, the file is not an image: \n\n" + e.ToString();
+            }
+           
             return outputText;
 
         }    

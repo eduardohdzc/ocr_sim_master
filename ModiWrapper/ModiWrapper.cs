@@ -35,25 +35,28 @@ namespace Ocr.Wrapper.ModiWrapper
 
             }       
 
-            
-
-
             return createMODI(filePath);
 
         }
 
         private string createMODI(string fileName){
-            MODI.Document md = new MODI.Document(); 
-            md.Create(fileName); 
-            md.OCR(language,  true, true); 
-            MODI.Image image = (MODI.Image)md.Images[0];
-            outputText = image.Layout.Text;
-            
-            md.Close();
+            try {
+                MODI.Document md = new MODI.Document();
+                md.Create(fileName);
+                md.OCR(language, true, true);
+                MODI.Image image = (MODI.Image)md.Images[0];
+                outputText = image.Layout.Text;
+
+                md.Close();
+            }
+            catch (Exception e)
+            {
+                outputText = "An error occurred, the file is not an image: \n\n" + e.ToString();
+            }
             return outputText;
             
         }
 
-        }
-
     }
+
+}
